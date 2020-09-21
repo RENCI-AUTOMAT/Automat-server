@@ -1,0 +1,318 @@
+[__main__.parse_args] - 2020-04-26 23:13:11,635: Running in clustered mode about to join http://automat:8090
+[PLATER.services.util.graph_adapter.__init__] - 2020-04-26 23:13:11,637: PINGING NEO4J
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:13:11,636: contacting http://automat:8090
+[PLATER.services.util.graph_adapter.ping] - 2020-04-26 23:13:11,649: Error contacting Neo4j @ http://knowledge_graph:7474/db/data/labels -- Exception raised -- HTTPConnectionPool(host='knowledge_graph', port=7474): Max retries exceeded with url: /db/data/labels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f0c256f6100>: Failed to establish a new connection: [Errno -5] No address associated with hostname'))
+[PLATER.services.util.graph_adapter.ping] - 2020-04-26 23:13:11,655: None
+[__main__.parse_args] - 2020-04-26 23:17:18,320: Running in clustered mode about to join http://automat:8090
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:17:18,322: contacting http://automat:8090
+[PLATER.services.util.graph_adapter.__init__] - 2020-04-26 23:17:18,322: PINGING NEO4J
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:17:18,339: heartbeat to http://automat:8090 returned 200
+[PLATER.services.util.graph_adapter.ping] - 2020-04-26 23:17:18,459: Contacting neo4j took 0.13101410865783691 seconds.
+[PLATER.services.util.graph_adapter.ping] - 2020-04-26 23:17:18,462: Error contacting Neo4j @ http://neo4j:7474/db/data/labels -- Exception raised -- server returned 401
+[PLATER.services.util.graph_adapter.ping] - 2020-04-26 23:17:18,465: None
+[__main__.parse_args] - 2020-04-26 23:18:25,605: Running in clustered mode about to join http://automat:8090
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:18:25,606: contacting http://automat:8090
+[PLATER.services.util.graph_adapter.__init__] - 2020-04-26 23:18:25,607: PINGING NEO4J
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:18:25,622: heartbeat to http://automat:8090 returned 200
+[PLATER.services.util.graph_adapter.ping] - 2020-04-26 23:18:25,644: Contacting neo4j took 0.0344386100769043 seconds.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-26 23:18:25,646: Checking for edge index `edge_id_index`.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-26 23:18:25,740: Edge index edge_id_index found.
+[PLATER.services.core.__init__] - 2020-04-26 23:18:25,743: [0] Validation turned on.
+[PLATER.validators.plater_validators.__init__] - 2020-04-26 23:18:25,746: Initializing validator http://neo4j:7474
+[PLATER.validators.KGX_validator.__init__] - 2020-04-26 23:18:26,496: Graph contains 558 Paths and 1 disconnected nodes.
+[PLATER.validators.build_compare.__init__] - 2020-04-26 23:18:26,499: initializing build comparision validator
+[PLATER.services.util.graph_adapter.get_schema] - 2020-04-26 23:18:26,861: generating graph summary
+[PLATER.services.util.graph_adapter.get_schema] - 2020-04-26 23:18:27,544: generated summary for 4 node types.
+[PLATER.validators.KGX_validator.validate] - 2020-04-26 23:18:27,546: Found 1 disconnected nodes.
+[PLATER.validators.KGX_validator.validate] - 2020-04-26 23:18:27,549: Validating disconnected nodes
+[PLATER.validators.KGX_validator.validate] - 2020-04-26 23:18:27,552: Fetching 1000 skipping first 0
+[PLATER.validators.KGX_validator.validate] - 2020-04-26 23:18:27,689: got nodes... running validation
+[__main__.parse_args] - 2020-04-26 23:19:38,175: Running in clustered mode about to join http://automat:8090
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:19:38,176: contacting http://automat:8090
+[PLATER.services.util.graph_adapter.__init__] - 2020-04-26 23:19:38,177: PINGING NEO4J
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:19:38,200: heartbeat to http://automat:8090 returned 200
+[PLATER.services.util.graph_adapter.ping] - 2020-04-26 23:19:38,203: Contacting neo4j took 0.02228236198425293 seconds.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-26 23:19:38,207: Checking for edge index `edge_id_index`.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-26 23:19:38,228: Edge index edge_id_index found.
+[PLATER.services.core.run_web_server] - 2020-04-26 23:19:38,231: [0] Starting web server
+[PLATER.services.util.graph_adapter.get_schema] - 2020-04-26 23:19:38,294: generating graph summary
+[PLATER.services.util.graph_adapter.get_schema] - 2020-04-26 23:19:38,390: generated summary for 4 node types.
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:20:08,233: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:20:38,273: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:21:08,309: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:21:38,345: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:22:08,381: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:22:38,416: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:23:08,427: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:23:38,449: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:24:08,483: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:24:38,515: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:25:08,556: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:25:38,601: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:26:08,658: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:26:38,698: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:27:08,746: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:27:38,783: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:28:08,824: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:28:38,863: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:29:08,901: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:29:38,932: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:30:08,967: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:30:39,038: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:31:09,087: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:31:39,125: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:32:09,162: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:32:39,199: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:33:09,225: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:33:39,258: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:34:09,294: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:34:39,329: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:35:09,365: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:35:39,401: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:36:09,440: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:36:39,483: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:37:09,547: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:37:39,583: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:38:09,621: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:38:39,661: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:39:09,699: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:39:39,729: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:40:09,780: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:40:39,814: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:41:09,854: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:41:39,911: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:42:09,953: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:42:39,988: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:43:10,031: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:43:40,067: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:44:10,105: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:44:40,136: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:45:10,175: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:45:40,197: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:46:10,228: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:46:40,261: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:47:10,296: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:47:40,325: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:48:10,357: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:48:40,368: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:49:10,404: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:49:40,438: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:50:10,477: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:50:40,510: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:51:10,542: heartbeat to http://automat:8090 returned 200
+[__main__.parse_args] - 2020-04-26 23:51:44,335: Running in clustered mode about to join http://automat:8090
+[PLATER.services.util.graph_adapter.__init__] - 2020-04-26 23:51:44,336: PINGING NEO4J
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:51:44,336: contacting http://automat:8090
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:51:44,357: heartbeat to http://automat:8090 returned 200
+[PLATER.services.util.graph_adapter.ping] - 2020-04-26 23:51:44,358: Contacting neo4j took 0.019808053970336914 seconds.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-26 23:51:44,362: Checking for edge index `edge_id_index`.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-26 23:51:44,375: Edge index edge_id_index found.
+[PLATER.services.core.run_web_server] - 2020-04-26 23:51:44,378: [0] Starting web server
+[PLATER.services.util.graph_adapter.get_schema] - 2020-04-26 23:51:44,408: generating graph summary
+[PLATER.services.util.graph_adapter.get_schema] - 2020-04-26 23:51:44,486: generated summary for 4 node types.
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:52:14,395: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:52:44,419: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:53:14,452: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:53:44,489: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:54:14,504: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:54:44,538: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:55:14,566: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:55:44,590: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:56:14,626: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:56:44,662: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:57:14,701: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:57:44,737: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:58:14,763: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:58:44,799: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:59:14,869: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-26 23:59:44,914: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:00:14,941: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:00:44,974: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:01:15,010: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:01:45,046: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:02:15,084: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:02:45,115: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:03:15,137: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:03:45,173: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:04:15,214: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:04:45,252: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:05:15,287: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:05:45,323: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:06:15,354: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:06:45,396: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:07:15,434: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:07:45,467: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:08:15,501: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:08:45,536: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:09:15,564: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:09:45,599: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:10:15,635: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:10:45,672: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:11:15,710: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:11:45,749: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:12:15,781: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:12:45,820: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:13:15,837: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:13:45,881: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:14:15,915: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:14:45,949: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:15:15,980: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:15:45,993: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:16:16,030: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:16:46,066: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:17:16,099: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:17:46,137: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:18:16,173: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:18:46,199: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:19:16,236: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:19:46,267: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:20:16,305: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:20:46,342: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:21:16,379: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:21:46,419: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:22:16,459: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:22:46,496: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 00:23:16,530: heartbeat to http://automat:8090 returned 200
+[PLATER.services.util.graph_adapter.__init__] - 2020-04-27 01:03:40,091: PINGING NEO4J
+[PLATER.services.util.graph_adapter.ping] - 2020-04-27 01:03:40,145: Contacting neo4j took 0.052610158920288086 seconds.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-27 01:03:40,147: Checking for edge index `edge_id_index`.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-27 01:03:40,460: Edge index edge_id_index found.
+[PLATER.services.core.run_web_server] - 2020-04-27 01:03:40,462: [0] Starting web server
+[PLATER.services.util.graph_adapter.get_schema] - 2020-04-27 01:04:52,541: generating graph summary
+[PLATER.services.util.graph_adapter.get_schema] - 2020-04-27 01:05:12,030: generated summary for 16 node types.
+[PLATER.services.util.graph_adapter.__init__] - 2020-04-27 01:24:20,348: PINGING NEO4J
+[PLATER.services.util.graph_adapter.ping] - 2020-04-27 01:24:20,361: Contacting neo4j took 0.011887550354003906 seconds.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-27 01:24:20,365: Checking for edge index `edge_id_index`.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-27 01:24:20,435: Edge index edge_id_index found.
+[PLATER.services.core.run_web_server] - 2020-04-27 01:24:20,453: [0] Starting web server
+[PLATER.services.util.graph_adapter.__init__] - 2020-04-27 01:28:28,664: PINGING NEO4J
+[PLATER.services.util.graph_adapter.ping] - 2020-04-27 01:28:28,758: Contacting neo4j took 0.08981442451477051 seconds.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-27 01:28:28,761: Checking for edge index `edge_id_index`.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-27 01:28:29,070: Edge index edge_id_index found.
+[PLATER.services.core.run_web_server] - 2020-04-27 01:28:29,074: [0] Starting web server
+[PLATER.services.util.graph_adapter.get_schema] - 2020-04-27 01:30:22,919: generating graph summary
+[PLATER.services.util.graph_adapter.get_schema] - 2020-04-27 01:30:50,932: generated summary for 16 node types.
+[PLATER.services.util.graph_adapter.__init__] - 2020-04-27 01:46:47,914: PINGING NEO4J
+[PLATER.services.util.graph_adapter.ping] - 2020-04-27 01:46:47,924: Contacting neo4j took 0.008599281311035156 seconds.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-27 01:46:47,926: Checking for edge index `edge_id_index`.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-27 01:46:47,950: Edge index edge_id_index found.
+[PLATER.services.core.run_web_server] - 2020-04-27 01:46:47,955: [0] Starting web server
+[PLATER.services.util.graph_adapter.get_schema] - 2020-04-27 01:48:16,420: generating graph summary
+[PLATER.services.util.graph_adapter.get_schema] - 2020-04-27 01:48:37,081: generated summary for 16 node types.
+[PLATER.services.util.graph_adapter.__init__] - 2020-04-27 01:51:47,470: PINGING NEO4J
+[PLATER.services.util.graph_adapter.ping] - 2020-04-27 01:51:47,565: Contacting neo4j took 0.09292745590209961 seconds.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-27 01:51:47,573: Checking for edge index `edge_id_index`.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-27 01:51:47,888: Edge index edge_id_index found.
+[PLATER.services.core.run_web_server] - 2020-04-27 01:51:47,891: [0] Starting web server
+[PLATER.services.util.graph_adapter.get_schema] - 2020-04-27 01:53:12,413: generating graph summary
+[PLATER.services.util.graph_adapter.get_schema] - 2020-04-27 01:53:36,865: generated summary for 16 node types.
+[__main__.parse_args] - 2020-04-27 02:24:14,819: Running in clustered mode about to join http://automat:8090
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:24:14,827: contacting http://automat:8090
+[PLATER.services.util.graph_adapter.__init__] - 2020-04-27 02:24:14,828: PINGING NEO4J
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:24:15,068: heartbeat to http://automat:8090 returned 200
+[PLATER.services.util.graph_adapter.ping] - 2020-04-27 02:24:15,265: Contacting neo4j took 0.41561055183410645 seconds.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-27 02:24:15,286: Checking for edge index `edge_id_index`.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-27 02:24:16,475: Edge index edge_id_index found.
+[PLATER.services.core.run_web_server] - 2020-04-27 02:24:16,488: [0] Starting web server
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:24:45,137: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:25:15,183: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:25:45,234: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:26:15,334: heartbeat to http://automat:8090 returned 200
+[PLATER.services.util.graph_adapter.get_schema] - 2020-04-27 02:26:25,516: generating graph summary
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:26:45,424: heartbeat to http://automat:8090 returned 200
+[PLATER.services.util.graph_adapter.get_schema] - 2020-04-27 02:27:07,489: generated summary for 16 node types.
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:27:15,547: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:27:45,656: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:28:15,764: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:28:45,906: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:29:15,966: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:29:46,030: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:30:16,065: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:30:46,138: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:31:16,194: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:31:46,236: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:32:16,285: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:32:46,346: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:33:16,475: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:33:46,540: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:34:16,605: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:34:46,657: [X] Error contacting automat server HTTPConnectionPool(host='automat', port=8090): Max retries exceeded with url: /heartbeat (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fa53296a190>: Failed to establish a new connection: [Errno -5] No address associated with hostname'))
+[__main__.parse_args] - 2020-04-27 02:47:19,313: Running in clustered mode about to join http://automat:8090
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:47:19,319: contacting http://automat:8090
+[PLATER.services.util.graph_adapter.__init__] - 2020-04-27 02:47:19,321: PINGING NEO4J
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:47:19,438: heartbeat to http://automat:8090 returned 200
+[PLATER.services.util.graph_adapter.ping] - 2020-04-27 02:47:19,563: Contacting neo4j took 0.21670079231262207 seconds.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-27 02:47:19,570: Checking for edge index `edge_id_index`.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-27 02:47:19,936: Edge index edge_id_index found.
+[PLATER.services.core.run_web_server] - 2020-04-27 02:47:19,938: [0] Starting web server
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:47:49,517: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:48:19,621: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:48:49,680: heartbeat to http://automat:8090 returned 200
+[PLATER.services.util.graph_adapter.get_schema] - 2020-04-27 02:49:06,570: generating graph summary
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:49:19,765: heartbeat to http://automat:8090 returned 200
+[PLATER.services.util.graph_adapter.get_schema] - 2020-04-27 02:49:34,584: generated summary for 16 node types.
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:49:49,882: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:50:19,993: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:50:50,062: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:51:20,110: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:51:50,157: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:52:20,242: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:52:50,280: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:53:20,361: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:53:50,433: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:54:20,481: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:54:50,520: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:55:20,572: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:55:50,628: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:56:20,711: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:56:50,778: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:57:20,820: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:57:50,894: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:58:21,000: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:58:51,085: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:59:21,143: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 02:59:51,226: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:00:21,286: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:00:51,357: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:01:21,398: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:01:51,436: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:02:21,488: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:02:51,613: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:03:21,680: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:03:51,806: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:04:21,939: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:04:51,996: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:05:22,090: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:05:52,138: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:06:22,237: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:06:52,329: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:07:22,404: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:07:52,447: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:08:22,568: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:08:52,676: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:09:22,766: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:09:52,838: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:10:22,904: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:10:53,003: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:11:23,075: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:11:53,117: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:12:23,243: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:12:53,315: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:13:23,376: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:13:53,455: heartbeat to http://automat:8090 returned 200
+[__main__.parse_args] - 2020-04-27 03:17:43,143: Running in clustered mode about to join http://automat:8090
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:17:43,147: contacting http://automat:8090
+[PLATER.services.util.graph_adapter.__init__] - 2020-04-27 03:17:43,148: PINGING NEO4J
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:17:43,183: heartbeat to http://automat:8090 returned 200
+[PLATER.services.util.graph_adapter.ping] - 2020-04-27 03:17:43,244: Contacting neo4j took 0.08339118957519531 seconds.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-27 03:17:43,247: Checking for edge index `edge_id_index`.
+[PLATER.services.util.graph_adapter.make_indexes] - 2020-04-27 03:17:43,527: Edge index edge_id_index found.
+[PLATER.services.core.run_web_server] - 2020-04-27 03:17:43,531: [0] Starting web server
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:18:13,258: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:18:43,306: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:19:13,362: heartbeat to http://automat:8090 returned 200
+[PLATER.services.util.graph_adapter.get_schema] - 2020-04-27 03:19:19,246: generating graph summary
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:19:43,426: heartbeat to http://automat:8090 returned 200
+[PLATER.services.util.graph_adapter.get_schema] - 2020-04-27 03:19:46,377: generated summary for 16 node types.
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:20:13,490: heartbeat to http://automat:8090 returned 200
+[PLATER.services.core.send_heart_beat] - 2020-04-27 03:20:43,567: heartbeat to http://automat:8090 returned 200
