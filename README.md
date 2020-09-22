@@ -12,7 +12,7 @@ Each of the PLATER instance can be accessed using it's `Build-tag`
 #### Setup python
 
 ```
-cd KITCHEN/KITCHEN
+cd <automat-root>
 python -m venv venv
 source venv/bin/activate
 export PYTHONPATH=$PWD/Automat:$PWD
@@ -68,17 +68,17 @@ Plater can do validation via `--validate` argument on the backend graph using th
 Run Automat via docker.
 
 ```bash
-cd <KITCHEN-DIR>/KITCHEN/Automat
+cd <Automat-root>/Automat
 docker build --tag automat .
 docker run --rm --name \ 
        automat -p 8081:8081 \
        --network automat_default  automat
 ```
 
-Run plater via docker 
+Run [plater](https://github.com/TranslatorSRI/Plater) via docker 
 
 ```bash
-cd <KITCHEN-DIR>/KITCHEN/PLATER
+cd <plater-root>/PLATER
 docker build --tag plater . 
 docker run --rm --name plater \
        --network automat_default \ 
@@ -89,10 +89,10 @@ docker run --rm --name plater \
 
 #### Demo
 
-A demo docker compose file is found in `KITCHEN/KITCHEN/Automat/demo`. To run 
+A demo docker compose file is found in `<automat-root>/Automat/demo`. To run 
 add config parameters to the `.env.sample` save it as `.env`:
 ```bash
-cd KITCHEN/KITCHEN/Automat/demo
+cd <automat-root>/Automat/demo
 docker-compose up 
 ``` 
 
