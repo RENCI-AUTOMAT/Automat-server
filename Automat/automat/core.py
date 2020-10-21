@@ -6,6 +6,7 @@ from automat.registry import Heartbeat, Registry
 from automat.util.async_client import async_get_json, async_post_json
 from automat.util.logutil import LoggingUtil
 from jinja2 import Environment, PackageLoader
+
 from starlette.responses import HTMLResponse, JSONResponse
 
 logger = LoggingUtil.init_logging(__name__,
@@ -47,8 +48,10 @@ class Automat:
             'servers': [
                 {'url': self.config.get('AUTOMAT_SERVER_URL', 'https://automat.renci.org')}
             ],
-            'paths': {}
+            'paths': {},
         }
+        components = None
+        all_open_api_tags = list()
         server_status = self.registry.get_registry()
         tasks = []
         for tag in server_status:
@@ -64,13 +67,23 @@ class Automat:
                 continue
             tag, response = response.popitem()
             spec_paths = response.get('paths')
+            if not components:
+                components = response.get('components')
             if not spec_paths:
                 continue
             # append the tag with the build tag ,
             # this way we can route to them from UI too...
             for spec_path in spec_paths:
                 new_path = f'/{tag}{spec_path}'
-                open_api_spec['paths'][new_path] = spec_paths[spec_path]
+                new_spec_path = spec_paths[spec_path]
+                for method in new_spec_path:
+                    tags_arr = new_spec_path[method].get('tags',[])
+                    tags_arr.append(tag)
+                    new_spec_path[method]['tags']= tags_arr
+                open_api_spec['paths'][new_path] = new_spec_path
+            tag_json_obj = {'name': tag, 'description': f'Operations for {tag}.'}
+            if tag_json_obj not in all_open_api_tags:
+                all_open_api_tags.append(tag_json_obj)
         open_api_spec['paths']['/registry'] = {
             'get': {
                 'description': 'Returns list of available PLATER instances.'
@@ -94,6 +107,8 @@ class Automat:
                  }
             }
         }
+        open_api_spec['tags'] = all_open_api_tags
+        open_api_spec['components'] = components
         response = JSONResponse(open_api_spec)
         await response(scope, receive, send)
 
@@ -102,13 +117,15 @@ class Automat:
         logger.debug(f'[0] proxing request to {final_path}')
         if scope['method'] == 'GET':
             response, status_code = await async_get_json(final_path, Automat.parse_headers_to_dict(scope['headers']))
-        elif scope['method'] == 'POST':
+        elif scope['method'] == 'POST' or scope['method'] == 'OPTIONS':
             body = await Automat.read_body(receive)
+            logger.debug("sending ")
             response, status_code = await async_post_json(
                 final_path,
                 Automat.parse_headers_to_dict(scope['headers']),
                 body
             )
+            logger.debug("got something")
         await Automat.send_json_response(scope, receive, send, response, status_code=status_code)
 
     # /registry
