@@ -1,5 +1,7 @@
 #!/bin/sh
 
+
+# Wait for neo4j to start up ...
 NEO_AUTH=${NEO4J_HOST}:${NEO4_PASSWORD}
 NEO4J_URL="http://${NEO4J_HOST}:${NEO4J_HTTP_PORT}/db/data/labels"
 
@@ -10,5 +12,5 @@ do
     echo -n $response
     sleep 1
 done
-
-python main.py $*
+# call statup script in plater container
+./main.sh

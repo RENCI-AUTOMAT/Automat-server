@@ -3,89 +3,68 @@
 ## About Automat
 Automat is a common proxy PLATER instances. It aggregates the apidocs
 coming from multiple PLATER instances and displays them in the common platform.
-Each of the PLATER instance can be accessed using it's `Build-tag`
+Each of the PLATER instance can be accessed using it's `PLATER-TITLE`, 
+eg. http://<automat-host>:8080/<plater-title>/predicates
 
+## Running
 
-## Setting up
-### Python
+Automat is currently supported to run in a containerized environment. 
+We recommend using [docker](https://docker.com)
 
-#### Setup python
+### Building image
 
+#### Automat image
+```bash
+cd <repo-root>/Automat/
+docker build --tag automat --no-cache .
 ```
-cd <automat-root>
-python -m venv venv
-source venv/bin/activate
-export PYTHONPATH=$PWD/Automat:$PWD
+
+#### Plater clustered mode Image
+```bash
+cd <repo-root>/Automat/plater-deploy
+docker build --tag plater-clustered --no-cache . 
 ```
 
-#### Automat
-Automat by default will run on `127.0.0.1:8081`. But this values can be overridden by
-providing these values in `WEB_HOST` and `WEB_PORT`
+### Running
+
+Populate the following values and store them in a `.env`.
+
+##### Environment :
+```bash
+# WEB_HOST and WEB_PORT as used by both Automat and Plater containers.
+ WEB_HOST=0.0.0.0
+ WEB_PORT=8080
+ # Neo4j settings
+ NEO4J_HOST=<neo4j_host>
+ NEO4J_USERNAME=<neo4j_user_name>
+ NEO4J_PASSWORD=<neo4j_password>
+ NEO4J_HTTP_PORT=<neo4j_http_port>
+ PLATER_TITLE=plater
+ PLATER_VERSION=2.0.0
+ PLATER_SERVICE_ADDRESS=plater
+ AUTOMAT_HOST=http://automat:8080
+ # Used for Swagger docs change to host name where automat is served from.
+ AUTOMAT_SERVER_URL=http://localhost:8080
+```
+
+#### Starting the containers:
+
+Create docker network 
+```bash
+docker network create automat-network
+```
+Start Automat container. (Note: `--name` arg for docker run should match `AUTOMAT_HOST` value.)
 
 ```bash
-pip install -r Automat/requirements.txt
-python Automat/main.py 
+docker run -d --env-file .env -p 8080:8080 --network automat-network --name automat  automat
 ```
-
-#### Plater 
-
-Plater can be run as standalone webservice with a neo4j backend. But also can be configured 
-to join an automat cluster.
-
-##### Starting the web server
-
-By default is will run at `127.0.0.1:8080`. Also this can be overridden by providing these 
-values in `WEB_HOST` and `WEB_PORT`. Be sure to run in a different terminal to avoid port clashes 
-with Automat.  
-
-
-
-Environment :
-
-Configure the following environment variables for PLATER.
-
-* `NEO4J_HOST` Host name of neo4j instance.
-* `NEO4J_HTTP_PORT` HTTP port for neo4j.
-* `NEO4J_USER_NAME` Neo4j user name.
-* `NEO4J_PASSWORD` Neo4j password.
-* `PLATER_SERVICE_ADDRESS` This is the callback address to send to Automat. It will be the address of the
-server that PLATER is hosted on Eg. `localhost`.
-
-After setting the environment variables, to run PLATER in clustered mode: 
-
+Start PLATER container. (Note: `--name` arg for docker run should much `PLATER_SERVICE_NAME` value.)
 ```bash
-cd PLATER
-pip install -r requirements.txt
-# In this eg, PLATER will in clustered mode and will join automat if its available
-python main.py --automat_host http://127.0.0.1:8081 --validate <build-tag>
+docker run -d --env-file .env --network automat-network --name plater plater-clustered 
 ```
+If Neo4j is also running as a docker container make sure it joins `automat-network`, 
+this can be done via the command `docker connect automat-network <neo4j-container-name> `
 
-Plater can do validation via `--validate` argument on the backend graph using the [KGX-toolkit](https://github.com/NCATS-Tangerine/kgx/tree/master/kgx)
-
-
-### Docker 
-
-Run Automat via docker.
-
-```bash
-cd <Automat-root>/Automat
-docker build --tag automat .
-docker run --rm --name \ 
-       automat -p 8081:8081 \
-       --network automat_default  automat
-```
-
-Run [plater](https://github.com/TranslatorSRI/Plater) via docker 
-
-```bash
-cd <plater-root>/PLATER
-docker build --tag plater . 
-docker run --rm --name plater \
-       --network automat_default \ 
-       --env PLATER_SERVICE_ADDRESS=plater plater \
-       --automat_host http://automat:8081 \ 
-       <build_tag>
-```
 
 #### Demo
 

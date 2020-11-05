@@ -2,17 +2,18 @@ version: "3"
 services:
   automat:
     container_name: automat
-    image: renciorg/automat
+    image: renciorg/automat:2.0
     ports:
       - 8090:8090
     environment:
       - WEB_HOST=${AUTOMAT_WEB_HOST}
       - WEB_PORT=${AUTOMAT_WEB_PORT}
+      - AUTOMAT_SERVER_URL=http://localhost:${AUTOMAT_WEB_PORT}
     volumes:
-      - ./logs:/home/plater/KITCHEN/KITCHEN/Automat/logs
+      - ./logs:/home/plater/Automat-server/Automat/logs
   plater:
     container_name: plater
-    image: renciorg/plater
+    image: renciorg/plater-clustered:2.0
     environment:
       - NEO4J_HOST=neo4j_demo_kp
       - NEO4J_HTTP_PORT=${NEO4J_HTTP_PORT}
@@ -20,21 +21,14 @@ services:
       - NEO4J_PASSWORD=${NEO4J_PASSWORD}
       - WEB_HOST=${PLATER_WEB_HOST}
       - WEB_PORT=${PLATER_WEB_PORT}
-      - PLATER_SERVICE_ADDRESS=plater # change this to container name so automat can talk back to plater
+      - PLATER_SERVICE_ADDRESS=plater # name of this container. Automat proxies to the name.
+      - PLATER_TITLE=demo-plater # needs to be dns compatible
+      - AUTOMAT_HOST=http://automat:${AUTOMAT_WEB_PORT}
     entrypoint:
       - ./wait_for_neo4j.sh
-    command:
-      - --automat_host
-      - http://automat:${AUTOMAT_WEB_PORT} # pass automat address
-        #      - --validate # turn on kgx validation, validation results will be placed under logs
-        # - --reset_summary # this option will reset the graph diff file in logs,
-        # the graph diff file will help compare
-        # graphs that this instance has served. Useful in detecting changes between new graph
-      # deployments.
-      - my_plater # `Build-tag`,    this is the tag that it will appear as in automat
     volumes:
-      - ./logs:/home/plater/KITCHEN/KITCHEN/PLATER/logs
-      - ./wait_for_neo4j.sh:/home/plater/KITCHEN/KITCHEN/PLATER/wait_for_neo4j.sh
+      - ./logs:/home/plater/Plater/PLATER/logs
+      - ./wait_for_neo4j.sh:/home/plater/Plater/wait_for_neo4j.sh
   neo4j:
     image: renciorg/neo4jkp
     container_name: neo4j_demo_kp
