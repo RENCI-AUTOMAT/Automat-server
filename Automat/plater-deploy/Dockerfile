@@ -1,4 +1,4 @@
-FROM renciorg/plater:2.0
+FROM renciorg/plater:2.1
 
 USER root
 ENV MODE="deploy"
