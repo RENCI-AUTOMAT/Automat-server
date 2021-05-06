@@ -13,13 +13,13 @@ WORKER_TIMEOUT=${WORKER_TIMEOUT:-600}
 function webServer {
     echo "Starting web server ... "
     if [ "$MODE" == "deploy" ]; then
-        gunicorn PLATER.services.app:APP -b \
+        gunicorn PLATER.services.server:APP -b \
         ${WEB_HOST}:${WEB_PORT} \
         --workers ${NUM_WORKERS} \
         --timeout ${WORKER_TIMEOUT} \
         -k uvicorn.workers.UvicornWorker
     else
-        uvicorn PLATER.services.app:APP --host ${WEB_HOST} --port ${WEB_PORT} --reload
+        uvicorn PLATER.services.server:APP --host ${WEB_HOST} --port ${WEB_PORT} --reload
     fi
 }
 function heartbeat {
