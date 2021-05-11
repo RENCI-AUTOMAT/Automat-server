@@ -133,8 +133,7 @@ class Automat:
         registry_formatted = list(self.registry.get_registry().keys())
         await Automat.send_json_response(scope, receive, send, registry_formatted, 200)
 
-
-    # /apidocs
+    # /
     async def handle_swagger_docs(self, scope, recieve, send):
         html_response = HTMLResponse(content=self.swagger_ui_html, media_type='text/html')
         await html_response(scope, recieve, send)
@@ -172,6 +171,8 @@ class Automat:
             logger.debug(f'[0] found entry for backend server {root_path} --- {backend_sever_url}')
             await self.handle_route_to_backend(scope, receive, send, backend_sever_url, path[1:])
             return
+
+        await self.send_404_response(scope, receive, send)
 
     @staticmethod
     def setup_swagger_ui_html():
@@ -217,7 +218,7 @@ class Automat:
         await json_response(scope, receive, send)
 
     @staticmethod
-    async def get_swagger_paths(server_url,tag,  timeout=5*6):
+    async def get_swagger_paths(server_url, tag,  timeout=5*6):
         open_api_path = '/openapi.json'
         full_path = f'http://{server_url}{open_api_path}'
         response, status_code = await async_get_json(full_path, timeout=timeout)
