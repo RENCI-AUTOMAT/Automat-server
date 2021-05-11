@@ -1,0 +1,25 @@
+dist: xenial
+
+language: python
+python:
+  - "3.8.5"
+
+notifications:
+  email:
+    - kebedey@renci.org
+
+
+# command to install dependencies
+install:
+  - pip install -r Automat/requirements.txt
+
+env:
+  global:
+    - PYTHONPATH=$PWD/Automat/automat
+
+# command to run tests
+script:
+  - pytest -p no:warnings $PWD/Automat/automat/tests
+
+after_success:
+  - coveralls
