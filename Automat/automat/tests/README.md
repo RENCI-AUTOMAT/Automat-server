@@ -10,7 +10,8 @@ Running these tests can be done using pytest.
 
 * [test_core.py](https://github.com/RENCI-AUTOMAT/Automat-server/blob/master/Automat/automat/tests/test_core.py)
 
-Tests proxy functionality with mock servers. Asserts responses from downstream servers are passed down.
+Tests proxy functionality with mock servers. Asserts responses from downstream servers are passed back to clients, including http status codes.
+And also asserts down-stream servers get what client has sent to automat server. 
   
 * [test_registry.py](https://github.com/RENCI-AUTOMAT/Automat-server/blob/master/Automat/automat/tests/test_registry.py)
 
