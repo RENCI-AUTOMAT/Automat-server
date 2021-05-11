@@ -1,4 +1,6 @@
-# Automat
+# Automat 
+
+![test badge](https://travis-ci.com/RENCI-AUTOMAT/Automat-server.svg?branch=master)
 
 ## About Automat
 Automat is a common proxy PLATER instances. It aggregates the apidocs
@@ -75,5 +77,13 @@ cd <automat-root>/Automat/demo
 docker-compose up 
 ``` 
 
+#### Test
+
+To run automat Unit tests
+```
+cd <automat-root>/Automat/automat
+export PYTHONPATH=$PYTHONPATH:$PWD
+pytest tests/
+```
  
  
