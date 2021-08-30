@@ -54,7 +54,8 @@ class Automat:
         all_open_api_tags = list()
         server_status = self.registry.get_registry()
         tasks = []
-        for tag in server_status:
+        sorted_tags = sorted(server_status)
+        for tag in sorted_tags:
             server = server_status[tag]['url']
             tasks.append(self.get_swagger_paths(server, tag))
         # do requests parallel
