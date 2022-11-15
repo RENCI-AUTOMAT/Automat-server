@@ -1,4 +1,4 @@
-FROM renciorg/plater:latest
+FROM ghcr.io/translatorsri/plater:latest
 
 USER root
 ENV MODE="deploy"
