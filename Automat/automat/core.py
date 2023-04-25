@@ -42,7 +42,7 @@ class Automat:
             'openapi': '3.0.2',
             'info': {
                 'title': f'Automat',
-                'version': '2.0',
+                'version': '2.1',
                 'termsOfService': 'http://loading',
             },
             'servers': [
@@ -85,6 +85,11 @@ class Automat:
             tag_json_obj = {'name': tag, 'description': f'Operations for {tag}.'}
             if tag_json_obj not in all_open_api_tags:
                 all_open_api_tags.append(tag_json_obj)
+        index = 0
+        for path_loc, value in open_api_spec['paths'].items():
+            for path_type, details in value.items():
+                details['operationId'] = details['operationId'] + f"_{path_type}_{index}"
+            index += 1
         open_api_spec['paths']['/registry'] = {
             'get': {
                 'description': 'Returns list of available PLATER instances.'
