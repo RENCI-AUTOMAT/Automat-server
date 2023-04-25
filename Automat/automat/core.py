@@ -6,6 +6,7 @@ from automat.registry import Heartbeat, Registry
 from automat.util.async_client import async_get_json, async_post_json
 from automat.util.logutil import LoggingUtil
 from jinja2 import Environment, PackageLoader
+from functools import reduce
 
 from starlette.responses import HTMLResponse, JSONResponse
 
@@ -85,11 +86,10 @@ class Automat:
             tag_json_obj = {'name': tag, 'description': f'Operations for {tag}.'}
             if tag_json_obj not in all_open_api_tags:
                 all_open_api_tags.append(tag_json_obj)
-        index = 0
         for path_loc, value in open_api_spec['paths'].items():
             for path_type, details in value.items():
-                details['operationId'] = details['operationId'] + f"_{path_type}_{index}"
-            index += 1
+                tags_str = "_".join([x.replace(' ', '') for x in details['tags']])
+                details['operationId'] = details['operationId'] + f"_{tags_str}"
         open_api_spec['paths']['/registry'] = {
             'get': {
                 'description': 'Returns list of available PLATER instances.'
