@@ -88,7 +88,7 @@ class Automat:
                 all_open_api_tags.append(tag_json_obj)
         for path_loc, value in open_api_spec['paths'].items():
             for path_type, details in value.items():
-                tags_str = "_".join([x.replace(' ', '') for x in details['tags']])
+                tags_str = "_".join([x.replace(' ', '') for x in sorted(details['tags'])])
                 details['operationId'] = details['operationId'] + f"_{tags_str}"
         open_api_spec['paths']['/registry'] = {
             'get': {
