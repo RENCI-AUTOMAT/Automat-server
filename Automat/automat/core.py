@@ -6,7 +6,6 @@ from automat.registry import Heartbeat, Registry
 from automat.util.async_client import async_get_json, async_post_json
 from automat.util.logutil import LoggingUtil
 from jinja2 import Environment, PackageLoader
-from functools import reduce
 
 from starlette.responses import HTMLResponse, JSONResponse
 
