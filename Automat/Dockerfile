@@ -4,11 +4,12 @@ ARG UID=1000
 ARG GID=1000
 RUN groupadd -o -g $GID automat
 RUN useradd -m -u $UID -g $GID -s /bin/bash automat
-WORKDIR /home/plater
-RUN git clone https://github.com/renci-automat/automat-server.git
 WORKDIR /home/plater/automat-server/Automat
 
-RUN pip install -r requirements.txt
+COPY ./requirements.txt /home/plater/automat-server/Automat/requirements.txt
+RUN pip3 install -r /home/plater/automat-server/Automat/requirements.txt
+
+COPY . /home/plater/automat-server/Automat/.
 
 EXPOSE 8081
 RUN mkdir -p logs
