@@ -91,8 +91,8 @@ class Automat:
                 details['operationId'] = details['operationId'] + f"_{tags_str}"
         open_api_spec['paths']['/registry'] = {
             'get': {
-                'description': 'Returns list of available PLATER instances.'
-                               'An entry from this list can be a prefix to route requests to specific PLATER backend',
+                'description': 'Returns list of available PLATER instances. '
+                               'An entry from this list can be a prefix to route requests to a specific PLATER backend.',
                 'operationId': 'get_list_of_platers',
                 'summary': 'List of platers available',
                 'parameters': [],
