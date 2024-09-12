@@ -1,6 +1,6 @@
 # Testing Automat
 
-Automat is a proxy server for multiple instance. It is really unaware of the paths
+Automat is a proxy server for multiple instances of Plater. It is really unaware of the paths
 implemented in the Platers, but is able to proxy different types of HTTP requests to
 registered instances. 
 
