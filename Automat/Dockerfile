@@ -1,4 +1,4 @@
-FROM python:3.8.1-buster
+FROM python:3.12-bullseye
 
 ARG UID=1000
 ARG GID=1000
