@@ -11,7 +11,7 @@ logger = LoggingUtil.init_logging(__name__,
                                   )
 
 
-async def async_get_json(url, headers={}, timeout=5*6):
+async def async_get_json(url, headers=None, timeout=5*6):
     """
         Gets json response from url asyncronously.
     """
@@ -40,7 +40,7 @@ async def async_get_json(url, headers={}, timeout=5*6):
             }, 500
 
 
-async def async_post_json(url, headers={}, body='', timeout=5*6):
+async def async_post_json(url, headers=None, body='', timeout=5*6):
     client_timeout = aiohttp.ClientTimeout(connect=timeout)
     async with aiohttp.ClientSession(timeout=client_timeout) as session:
         try:
@@ -69,7 +69,7 @@ async def async_post_json(url, headers={}, body='', timeout=5*6):
             }, 500
 
 
-async def async_get_text(url, headers={}):
+async def async_get_text(url, headers=None):
     """
         Gets text response from url asyncronously
     """
@@ -81,7 +81,7 @@ async def async_get_text(url, headers={}):
             return await response.text()
 
 
-async def async_get_response(url, headers={}, timeout=5*60):
+async def async_get_response(url, headers=None, timeout=5*60):
     """
     Returns the whole reponse object
     """
