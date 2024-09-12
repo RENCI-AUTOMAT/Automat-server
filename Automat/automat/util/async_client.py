@@ -1,7 +1,6 @@
 import aiohttp
-
-from aiohttp.web import HTTPException
 import traceback
+from json import JSONDecodeError
 from automat.config import config
 from automat.util.logutil import LoggingUtil
 
@@ -27,17 +26,17 @@ async def async_get_json(url, headers={}, timeout=5*6):
                         'error': error
                     }, response.status
                 return await response.json(), 200
-        except HTTPException as e:
-            logger.error(f'error contacting {url} -- {e}')
+        except aiohttp.ClientError as e:
+            logger.error(f"Error contacting {url} -- {e}")
             logger.debug(traceback.print_exc())
             return {
-                'error': f"Backend server at {url} caused  {e}"
+                "error": f"Backend server at {url} caused {e}"
             }, 500
         except Exception as e:
-            logger.error(f"Failed to get response from {url}.")
+            logger.error(f"Failed to get response from {url} -- {e}.")
             logger.debug(traceback.print_exc())
             return {
-                'error': f'Internal server error {e}'
+                "error": f'Internal server error {e}'
             }, 500
 
 
@@ -49,7 +48,7 @@ async def async_post_json(url, headers={}, body='', timeout=5*6):
                 if response.status != 200:
                     try:
                         content = await response.json()
-                    except:
+                    except JSONDecodeError:
                         content = await response.content.read()
                         content = {
                             'error': content.decode('utf-8')
@@ -57,6 +56,12 @@ async def async_post_json(url, headers={}, body='', timeout=5*6):
                     logger.error(f'{url} returned {response.status}. {content}')
                     return content, response.status
                 return await response.json(), 200
+        except aiohttp.ClientError as e:
+            logger.error(f"Error contacting {url} -- {e}")
+            logger.debug(traceback.print_exc())
+            return {
+                "error": f"Backend server at {url} caused {e}"
+            }, 500
         except Exception as e:
             logger.error(f"Failed to get response from {url}.")
             return {
@@ -64,7 +69,7 @@ async def async_post_json(url, headers={}, body='', timeout=5*6):
             }, 500
 
 
-async def async_get_text(url,headers={}):
+async def async_get_text(url, headers={}):
     """
         Gets text response from url asyncronously
     """
@@ -85,7 +90,7 @@ async def async_get_response(url, headers={}, timeout=5*60):
         async with session.get(url, headers=headers) as response:
             try:
                 json = await response.json()
-            except:
+            except JSONDecodeError:
                 json = {}
             try:
                 text = await response.text()
@@ -96,10 +101,9 @@ async def async_get_response(url, headers={}, timeout=5*60):
             except:
                 raw = ''
             return {
-                'headers' : response.headers,
+                'headers': response.headers,
                 'json': json,
                 'text': text,
                 'raw': raw,
                 'status': response.status
             }
-
