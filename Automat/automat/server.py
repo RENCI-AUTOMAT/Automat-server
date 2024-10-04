@@ -59,5 +59,5 @@ if config.get("OTEL_ENABLED", "False").lower() == "true":
     trace.set_tracer_provider(provider)
 
     # Enable OpenTelemetry instrumentation
-    app = OpenTelemetryMiddleware(app)
+    app = OpenTelemetryMiddleware(app, excluded_urls="hearbeat,favicon.ico")
     AioHttpClientInstrumentor().instrument()
