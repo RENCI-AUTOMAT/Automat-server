@@ -7,7 +7,7 @@ from automat.util.async_client import async_get_json, async_post_json
 from automat.util.logutil import LoggingUtil
 from jinja2 import Environment, PackageLoader
 
-from starlette.responses import HTMLResponse, JSONResponse
+from starlette.responses import HTMLResponse, JSONResponse, Response
 
 logger = LoggingUtil.init_logging(__name__,
                                   config.get('logging_level'),
@@ -42,7 +42,7 @@ class Automat:
             'openapi': '3.0.2',
             'info': {
                 'title': f'Automat',
-                'version': '2.1',
+                'version': '3.0',
                 'termsOfService': 'http://loading',
             },
             'servers': [
@@ -124,14 +124,18 @@ class Automat:
             response, status_code = await async_get_json(final_path, Automat.parse_headers_to_dict(scope['headers']))
         elif scope['method'] == 'POST' or scope['method'] == 'OPTIONS':
             body = await Automat.read_body(receive)
-            logger.debug("sending ")
+            # logger.debug("sending ")
             response, status_code = await async_post_json(
                 final_path,
                 Automat.parse_headers_to_dict(scope['headers']),
                 body
             )
-            logger.debug("got something")
-        await Automat.send_json_response(scope, receive, send, response, status_code=status_code)
+            # logger.debug("got something")
+        else:
+            logger.info(f'Received request with unsupported method {scope["method"]}')
+            response = json.dumps({'error': f'Method {scope["method"]} not allowed.'})
+            status_code = 405
+        await Automat.send_json_string_response(scope, receive, send, response, status_code=status_code)
 
     # /registry
     async def handle_registry(self, scope, receive, send):
@@ -213,6 +217,11 @@ class Automat:
     @staticmethod
     async def send_json_response(scope, receive, send, data, status_code):
         json_response = JSONResponse(data, status_code=status_code)
+        await json_response(scope, receive, send)
+
+    @staticmethod
+    async def send_json_string_response(scope, receive, send, data, status_code):
+        json_response = Response(data, media_type="application/json", status_code=status_code)
         await json_response(scope, receive, send)
 
     @staticmethod
