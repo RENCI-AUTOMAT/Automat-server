@@ -33,6 +33,8 @@ if config.get("OTEL_ENABLED", "False").lower() == "true":
     from opentelemetry.sdk.trace import TracerProvider
     from opentelemetry.sdk.trace.export import BatchSpanProcessor
     from opentelemetry.instrumentation.asgi import OpenTelemetryMiddleware
+    from opentelemetry.util.http import ExcludeList
+
     # from opentelemetry.instrumentation.aiohttp_client import AioHttpClientInstrumentor
     # would need requirement like opentelemetry-instrumentation-aiohttp-client==0.48b0
 
@@ -55,6 +57,10 @@ if config.get("OTEL_ENABLED", "False").lower() == "true":
     provider.add_span_processor(processor)
     trace.set_tracer_provider(provider)
 
+    # NOTE - This is here because OpenTelemetryMiddleware excluded_urls actually expects ExcludeList and not the typical
+    # comma separated regex list. In the future if we upgrade OpenTelemetryMiddleware we might have to change this.
+    exclude_list = ExcludeList(['heartbeat', 'meta', 'openapi'])
+
     # Enable OpenTelemetry instrumentation
-    app = OpenTelemetryMiddleware(app)
+    app = OpenTelemetryMiddleware(app, excluded_urls=exclude_list)
     # AioHttpClientInstrumentor().instrument()
