@@ -1,7 +1,5 @@
 from automat.config import config
 from automat.core import Automat
-from opentelemetry.instrumentation.aiohttp_client import AioHttpClientInstrumentor
-
 
 automat = Automat()
 
@@ -19,10 +17,8 @@ class App:
             while True:
                 message = await receive()
                 if message['type'] == 'lifespan.startup':
-                    ...  # Do some startup here!
                     await send({'type': 'lifespan.startup.complete'})
                 elif message['type'] == 'lifespan.shutdown':
-                    ...  # Do some shutdown here!
                     await send({'type': 'lifespan.shutdown.complete'})
                     return
         else:
@@ -37,6 +33,8 @@ if config.get("OTEL_ENABLED", "False").lower() == "true":
     from opentelemetry.sdk.trace import TracerProvider
     from opentelemetry.sdk.trace.export import BatchSpanProcessor
     from opentelemetry.instrumentation.asgi import OpenTelemetryMiddleware
+    # from opentelemetry.instrumentation.aiohttp_client import AioHttpClientInstrumentor
+    # would need requirement like opentelemetry-instrumentation-aiohttp-client==0.48b0
 
     resource = Resource(attributes={
         SERVICE_NAME: config.get("OTEL_SERVICE_NAME", "Automat"),
@@ -46,7 +44,6 @@ if config.get("OTEL_ENABLED", "False").lower() == "true":
     otel_host = config.get("OTEL_COLLECTOR_HOST", None)
     if otel_host:
         from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
-
         otel_port = config.get("OTEL_COLLECTOR_PORT", "4317")
         otel_endpoint = f'{otel_host}:{otel_port}'
         otel_exporter = OTLPSpanExporter(endpoint=f'{otel_endpoint}')
@@ -59,5 +56,5 @@ if config.get("OTEL_ENABLED", "False").lower() == "true":
     trace.set_tracer_provider(provider)
 
     # Enable OpenTelemetry instrumentation
-    app = OpenTelemetryMiddleware(app, excluded_urls="hearbeat,favicon.ico")
-    AioHttpClientInstrumentor().instrument()
+    app = OpenTelemetryMiddleware(app)
+    # AioHttpClientInstrumentor().instrument()
