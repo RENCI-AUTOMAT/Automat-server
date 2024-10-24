@@ -236,11 +236,11 @@ class Automat:
         open_api_path = '/openapi.json'
         full_path = f'http://{server_url}{open_api_path}'
         response, status_code = await async_get_json(full_path, timeout=timeout)
-        if 'error' in response:
-            logger.error(response['error'])
-            return {}
         logger.debug(response)
-        return {tag: response}
+        if status_code == 200:
+            return {tag: json.loads(response)}
+        else:
+            return {}
 
 
 

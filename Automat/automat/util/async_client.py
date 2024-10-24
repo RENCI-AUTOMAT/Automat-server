@@ -24,11 +24,10 @@ async def async_get_json(url, headers=None, timeout=5*6):
                     # there's no need to unpack and repack it
                     return await response.text(), 200
                 else:
-                    error = f"Plater {url} returned an unsuccessful status code ({response.status})."
+                    response_text = await response.text()
+                    error = f"Plater {url} returned an unsuccessful status code ({response.status}): {response_text}."
                     logger.error(error)
-                    return json.dumps({'error': error,
-                                       'code': response.status,
-                                       'response': await response.text()}), response.status
+                    return response_text, response.status
         except aiohttp.ClientError as e:
             logger.error(f"Error contacting {url} -- {e}")
             logger.info(traceback.print_exc())
@@ -50,11 +49,10 @@ async def async_post_json(url, headers=None, body='', timeout=5*6):
                     # there's no need to unpack and repack it
                     return await response.text(), 200
                 else:
-                    error = f"Plater {url} returned an unsuccessful status code ({response.status})."
+                    response_text = await response.text()
+                    error = f"Plater {url} returned an unsuccessful status code ({response.status}): {response_text}."
                     logger.error(error)
-                    return json.dumps({'error': error,
-                                       'code': response.status,
-                                       'response': await response.text()}), response.status
+                    return response_text, response.status
         except aiohttp.ClientError as e:
             logger.error(f"Error contacting {url} -- {e}")
             logger.info(traceback.print_exc())
@@ -87,7 +85,7 @@ async def async_get_response(url, headers=None, timeout=5*60):
         async with session.get(url, headers=headers) as response:
             try:
                 json = await response.json()
-            except JSONDecodeError:
+            except json.JSONDecodeError:
                 json = {}
             try:
                 text = await response.text()

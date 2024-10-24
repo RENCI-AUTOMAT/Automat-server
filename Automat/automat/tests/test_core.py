@@ -94,6 +94,7 @@ def test_errors_should_be_passed_down_from_proxied():
         payload = json.loads(kwargs['data'].decode('utf-8'))
         assert payload == input
         return CallbackResult(status=412, payload=output)
+
     def assertion_fun_500(url, **kwargs):
         payload = json.loads(kwargs['data'].decode('utf-8'))
         assert payload == input
@@ -108,4 +109,4 @@ def test_errors_should_be_passed_down_from_proxied():
         assert resp2.status_code == 412
         assert output == resp2.json()
         assert resp3.status_code == 500
-        assert  output == resp3.json()
+        assert output == resp3.json()
