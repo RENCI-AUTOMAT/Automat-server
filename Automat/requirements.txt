@@ -10,3 +10,4 @@ markupsafe==2.0.1
 opentelemetry-sdk==1.27.0
 opentelemetry-exporter-otlp-proto-grpc==1.27.0
 opentelemetry-instrumentation-asgi==0.48b0
+opentelemetry-instrumentation-aiohttp-client==0.48b0

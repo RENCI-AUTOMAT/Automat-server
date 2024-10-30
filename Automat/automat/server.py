@@ -34,9 +34,7 @@ if config.get("OTEL_ENABLED", "False").lower() == "true":
     from opentelemetry.sdk.trace.export import BatchSpanProcessor
     from opentelemetry.instrumentation.asgi import OpenTelemetryMiddleware
     from opentelemetry.util.http import ExcludeList
-
-    # from opentelemetry.instrumentation.aiohttp_client import AioHttpClientInstrumentor
-    # would need requirement like opentelemetry-instrumentation-aiohttp-client==0.48b0
+    from opentelemetry.instrumentation.aiohttp_client import AioHttpClientInstrumentor
 
     resource = Resource(attributes={
         SERVICE_NAME: config.get("OTEL_SERVICE_NAME", "Automat"),
@@ -59,8 +57,8 @@ if config.get("OTEL_ENABLED", "False").lower() == "true":
 
     # NOTE - This is here because OpenTelemetryMiddleware excluded_urls actually expects ExcludeList and not the typical
     # comma separated regex list. In the future if we upgrade OpenTelemetryMiddleware we might have to change this.
-    exclude_list = ExcludeList(['heartbeat', 'meta', 'openapi'])
+    exclude_list = ExcludeList(['heartbeat', 'meta', 'openapi', '^$', 'docs'])
 
     # Enable OpenTelemetry instrumentation
     app = OpenTelemetryMiddleware(app, excluded_urls=exclude_list)
-    # AioHttpClientInstrumentor().instrument()
+    AioHttpClientInstrumentor().instrument()
