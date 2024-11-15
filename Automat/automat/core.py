@@ -240,6 +240,7 @@ class Automat:
         if status_code == 200:
             return {tag: json.loads(response)}
         else:
+            logger.error(f'Error retrieving openapi from {server_url}: {response}')
             return {}
 
 
