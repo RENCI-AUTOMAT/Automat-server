@@ -6,9 +6,8 @@ from automat.registry import Heartbeat, Registry
 from automat.util.async_client import async_get_json, async_post_json
 from automat.util.logutil import LoggingUtil
 from jinja2 import Environment, PackageLoader
-from functools import reduce
 
-from starlette.responses import HTMLResponse, JSONResponse
+from starlette.responses import HTMLResponse, JSONResponse, Response
 
 logger = LoggingUtil.init_logging(__name__,
                                   config.get('logging_level'),
@@ -43,7 +42,7 @@ class Automat:
             'openapi': '3.0.2',
             'info': {
                 'title': f'Automat',
-                'version': '2.1',
+                'version': '3.0',
                 'termsOfService': 'http://loading',
             },
             'servers': [
@@ -92,8 +91,8 @@ class Automat:
                 details['operationId'] = details['operationId'] + f"_{tags_str}"
         open_api_spec['paths']['/registry'] = {
             'get': {
-                'description': 'Returns list of available PLATER instances.'
-                               'An entry from this list can be a prefix to route requests to specific PLATER backend',
+                'description': 'Returns list of available PLATER instances. '
+                               'An entry from this list can be a prefix to route requests to a specific PLATER backend.',
                 'operationId': 'get_list_of_platers',
                 'summary': 'List of platers available',
                 'parameters': [],
@@ -125,14 +124,18 @@ class Automat:
             response, status_code = await async_get_json(final_path, Automat.parse_headers_to_dict(scope['headers']))
         elif scope['method'] == 'POST' or scope['method'] == 'OPTIONS':
             body = await Automat.read_body(receive)
-            logger.debug("sending ")
+            # logger.debug("sending ")
             response, status_code = await async_post_json(
                 final_path,
                 Automat.parse_headers_to_dict(scope['headers']),
                 body
             )
-            logger.debug("got something")
-        await Automat.send_json_response(scope, receive, send, response, status_code=status_code)
+            # logger.debug("got something")
+        else:
+            logger.info(f'Received request with unsupported method {scope["method"]}')
+            response = json.dumps({'error': f'Method {scope["method"]} not allowed.'})
+            status_code = 405
+        await Automat.send_json_string_response(scope, receive, send, response, status_code=status_code)
 
     # /registry
     async def handle_registry(self, scope, receive, send):
@@ -217,6 +220,11 @@ class Automat:
         await json_response(scope, receive, send)
 
     @staticmethod
+    async def send_json_string_response(scope, receive, send, data, status_code):
+        json_response = Response(data, media_type="application/json", status_code=status_code)
+        await json_response(scope, receive, send)
+
+    @staticmethod
     async def send_404_response(scope, receive, send):
         json_response = JSONResponse({
             'error': f'No registered backend servers on {scope["path"]}'
@@ -228,11 +236,12 @@ class Automat:
         open_api_path = '/openapi.json'
         full_path = f'http://{server_url}{open_api_path}'
         response, status_code = await async_get_json(full_path, timeout=timeout)
-        if 'error' in response:
-            logger.error(response['error'])
-            return {}
         logger.debug(response)
-        return {tag: response}
+        if status_code == 200:
+            return {tag: json.loads(response)}
+        else:
+            logger.error(f'Error retrieving openapi from {server_url}: {response}')
+            return {}
 
 
 

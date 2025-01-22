@@ -1,9 +1,13 @@
-aiohttp==3.6.2
-aiofiles==0.4.0
+aiohttp==3.10.5
 Jinja2==2.11.1
 pyaml
 pytest
 aioresponses
-requests==2.22.0
+requests==2.32.3
 starlette==0.13.1
-uvicorn==0.11.7
+uvicorn[standard]==0.31.0
+markupsafe==2.0.1
+opentelemetry-sdk==1.27.0
+opentelemetry-exporter-otlp-proto-grpc==1.27.0
+opentelemetry-instrumentation-asgi==0.48b0
+opentelemetry-instrumentation-aiohttp-client==0.48b0

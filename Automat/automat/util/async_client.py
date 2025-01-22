@@ -1,7 +1,6 @@
 import aiohttp
-
-from aiohttp.web import HTTPException
 import traceback
+import json
 from automat.config import config
 from automat.util.logutil import LoggingUtil
 
@@ -12,7 +11,7 @@ logger = LoggingUtil.init_logging(__name__,
                                   )
 
 
-async def async_get_json(url, headers={}, timeout=5*6):
+async def async_get_json(url, headers=None, timeout=5*6):
     """
         Gets json response from url asyncronously.
     """
@@ -20,51 +19,52 @@ async def async_get_json(url, headers={}, timeout=5*6):
     async with aiohttp.ClientSession(timeout=client_timeout) as session:
         try:
             async with session.get(url, headers=headers) as response:
-                if response.status != 200:
-                    error = f"Failed to get response from {url}. Status code {response.status}"
+                if response.status == 200:
+                    # here we use text() instead of json() because we trust it's proper json
+                    # there's no need to unpack and repack it
+                    return await response.text(), 200
+                else:
+                    response_text = await response.text()
+                    error = f"Plater {url} returned an unsuccessful status code ({response.status}): {response_text}."
                     logger.error(error)
-                    return {
-                        'error': error
-                    }, response.status
-                return await response.json(), 200
-        except HTTPException as e:
-            logger.error(f'error contacting {url} -- {e}')
-            logger.debug(traceback.print_exc())
-            return {
-                'error': f"Backend server at {url} caused  {e}"
-            }, 500
+                    return response_text, response.status
+        except aiohttp.ClientError as e:
+            logger.error(f"Error contacting {url} -- {e}")
+            logger.info(traceback.print_exc())
+            return json.dumps({"error": f"An error occurred while calling the server at {url} ({e})"}), 500
         except Exception as e:
-            logger.error(f"Failed to get response from {url}.")
-            logger.debug(traceback.print_exc())
-            return {
-                'error': f'Internal server error {e}'
-            }, 500
+            error_message = f"An error occurred in Automat while calling {url} ({e})."
+            logger.error(error_message)
+            logger.info(traceback.print_exc())
+            return json.dumps({"error": error_message}), 500
 
 
-async def async_post_json(url, headers={}, body='', timeout=5*6):
+async def async_post_json(url, headers=None, body='', timeout=5*6):
     client_timeout = aiohttp.ClientTimeout(connect=timeout)
     async with aiohttp.ClientSession(timeout=client_timeout) as session:
         try:
             async with session.post(url, data=body, headers=headers) as response:
-                if response.status != 200:
-                    try:
-                        content = await response.json()
-                    except:
-                        content = await response.content.read()
-                        content = {
-                            'error': content.decode('utf-8')
-                        }
-                    logger.error(f'{url} returned {response.status}. {content}')
-                    return content, response.status
-                return await response.json(), 200
+                if response.status == 200:
+                    # here we use text() instead of json() because we trust it's proper json
+                    # there's no need to unpack and repack it
+                    return await response.text(), 200
+                else:
+                    response_text = await response.text()
+                    error = f"Plater {url} returned an unsuccessful status code ({response.status}): {response_text}."
+                    logger.error(error)
+                    return response_text, response.status
+        except aiohttp.ClientError as e:
+            logger.error(f"Error contacting {url} -- {e}")
+            logger.info(traceback.print_exc())
+            return json.dumps({"error": f"An error occurred while calling the server at {url} ({e})"}), 500
         except Exception as e:
-            logger.error(f"Failed to get response from {url}.")
-            return {
-                'error': f"Server returned {e}"
-            }, 500
+            error_message = f"An error occurred in Automat while calling {url} ({e})."
+            logger.error(error_message)
+            logger.info(traceback.print_exc())
+            return json.dumps({"error": error_message}), 500
 
 
-async def async_get_text(url,headers={}):
+async def async_get_text(url, headers=None):
     """
         Gets text response from url asyncronously
     """
@@ -76,7 +76,7 @@ async def async_get_text(url,headers={}):
             return await response.text()
 
 
-async def async_get_response(url, headers={}, timeout=5*60):
+async def async_get_response(url, headers=None, timeout=5*60):
     """
     Returns the whole reponse object
     """
@@ -85,7 +85,7 @@ async def async_get_response(url, headers={}, timeout=5*60):
         async with session.get(url, headers=headers) as response:
             try:
                 json = await response.json()
-            except:
+            except json.JSONDecodeError:
                 json = {}
             try:
                 text = await response.text()
@@ -96,10 +96,9 @@ async def async_get_response(url, headers={}, timeout=5*60):
             except:
                 raw = ''
             return {
-                'headers' : response.headers,
+                'headers': response.headers,
                 'json': json,
                 'text': text,
                 'raw': raw,
                 'status': response.status
             }
-
